@@ -12,10 +12,17 @@ const Message = ({ message, toggleStar, toggleSelect}) => {
   }
 
   const checkBox = (e) => {
+    e.stopPropagation()
     toggleSelect(message)
   }
 
+  // const expandedMessage = (e) => {
+  //   e.stopPropagation()
+  //   messageExpanded(message)
+  // }
+
   return (
+
     <div className={`row message ${selectedClass}`} >
       <div className="col-xs-1">
         <div className="row">
@@ -28,11 +35,19 @@ const Message = ({ message, toggleStar, toggleSelect}) => {
         </div>
       </div>
       <div className="col-xs-11">
-        <span class="label label-warning">dev</span>
-        <span class="label label-warning">gschool</span>
+        <span className="label label-warning">dev</span>
+        <span className="label label-warning">gschool</span>
         {message.subject}
       </div>
     </div>
+
+    
+    // <div class="row message-body">
+    //   <div class="col-xs-11 col-xs-offset-1" onClick={ expandedMessage }>
+    //     This is the body of the message.
+    //   </div>
+    // </div>
+
   )
 }
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Messages from '../components/Messages'
 import './App.css';
+import Toolbar from '../components/Toolbar'
 
 
 class App extends Component {
@@ -19,19 +20,27 @@ class App extends Component {
     this.setState({ messages: messages })
   }
 
-  toggleSelect(message) {
+  toggleSelect = (message) => {
     const messages = this.state.messages.slice()
     const index = this.state.messages.indexOf(message)
     messages[index].selected = !messages[index].selected
     this.setState({ messages: messages })
   }
 
-  toggleWithLabels(message){
+  toggleWithLabels = (message) => {
     const messages = this.state.messages.slice()
     const index = this.state.messages.indexOf(message)
     messages[index].labeled = !messages[index].labeled
-    this.setState({ messages: messages})
+    this.setState({ messages: messages })
   }
+
+
+  // messageExpanded = (message) => {
+  //   const messages = this.state.messages.slice()
+  //   const index = this.state.messages.indexOf(message)
+  //   messages[index].expanded = !messages[index].expanded
+  //   this.setState({ messages: messages })
+  // }
 
   render() {
     return (
@@ -50,10 +59,12 @@ class App extends Component {
           </div>
         </div>
         <div className="container">
+          <Toolbar />
           <Messages messages={this.state.messages}
           toggleStar={this.toggleStar}
           toggleSelect={this.toggleSelect}
           toggleWithLabels={this.toggleWithLabels}/>
+
         </div>
       </div>
     );
