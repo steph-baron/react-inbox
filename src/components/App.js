@@ -17,9 +17,20 @@ class App extends Component {
     messages[index].starred = !messages[index].starred
     // updating the messages that pass through the JSON object below {messages:messages}
     this.setState({ messages: messages })
+  }
 
-    console.log("This is message: "+ JSON.stringify(message))
-    console.log("This is state: "+ JSON.stringify(this.state.messages))
+  toggleSelect(message) {
+    const messages = this.state.messages.slice()
+    const index = this.state.messages.indexOf(message)
+    messages[index].selected = !messages[index].selected
+    this.setState({ messages: messages })
+  }
+
+  toggleWithLabels(message){
+    const messages = this.state.messages.slice()
+    const index = this.state.messages.indexOf(message)
+    messages[index].labeled = !messages[index].labeled
+    this.setState({ messages: messages})
   }
 
   render() {
@@ -39,7 +50,10 @@ class App extends Component {
           </div>
         </div>
         <div className="container">
-          <Messages messages={this.state.messages} toggleStar={this.toggleStar}/>
+          <Messages messages={this.state.messages}
+          toggleStar={this.toggleStar}
+          toggleSelect={this.toggleSelect}
+          toggleWithLabels={this.toggleWithLabels}/>
         </div>
       </div>
     );

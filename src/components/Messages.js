@@ -3,10 +3,10 @@ import Message from './Message.js';
 
 // Pass props to messages
 
-const Messages = ({ messages, toggleStar }) => {
+const Messages = ({ messages, toggleStar, toggleSelect }) => {
   return (
     <div>
-      {messages.map (message => ( <Message key={message.id} message={message} toggleStar={toggleStar}/>))}
+      {messages.map (message => ( <Message key={message.id} message={message} toggleStar={toggleStar} toggleSelect={toggleSelect}/>))}
     </div>
   )
 }
